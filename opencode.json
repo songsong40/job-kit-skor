@@ -1,0 +1,8 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "deepseek/deepseek-v4-pro",
+  "instructions": ["CLAUDE.md"],
+  "permission": {
+    "external_directory": "allow"
+  }
+}

@@ -1,0 +1,8 @@
+# Domains that block automated access (Cloudflare, captcha, 403).
+# Auto-updated: when a fetch returns 403 on a new domain, it's appended here.
+# Used by /resume-queue add to short-circuit the fetch and ask for paste.
+# Used by /resume-batch to know which URLs need manual job descriptions.
+blocked:
+  - indeed.com
+  - glassdoor.com
+  - linkedin.com/jobs

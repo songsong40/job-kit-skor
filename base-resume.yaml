@@ -1,0 +1,126 @@
+# =============================================================================
+# YOUR BASE RESUME — Fill this out ONCE. The pipeline uses it for every job.
+# =============================================================================
+# This is your master resume. Write it in plain text with clear section headers.
+# The LLM will tailor it for each job description while keeping all facts true.
+#
+# TIPS:
+#   - Include MORE detail than you'd put on a single resume. The LLM picks
+#     the most relevant parts per job. Over-sharing here is good.
+#   - Use numbers/metrics wherever possible (%, $, users, time saved).
+#   - Order doesn't matter much — the LLM reorders per job.
+#   - You can include up to 5 roles; the LLM will use the most relevant 3.
+# =============================================================================
+
+NAME: Jane Smith
+EMAIL: hello@example.com
+PHONE: "+1-555-0100"
+LOCATION: City, Country
+LINKEDIN: ""  # add your LinkedIn URL if you have one
+GITHUB: ""    # add your GitHub URL if you have one
+PORTFOLIO: "" # leave empty if you don't have one
+
+# A one-line professional identity (used as fallback headline)
+HEADLINE: Software AI Engineer — LLM Deployment, Agentic Coding, RAG
+
+# ---------------------------------------------------------------------------
+# PROFESSIONAL SUMMARY (3-4 sentences about your overall career)
+# ---------------------------------------------------------------------------
+SUMMARY: |
+  A young tech enthusiast on a mission to make an impact wherever I go.
+  With a knack for problem-solving and a passion for innovation, I bring
+  a fresh perspective and a hunger for learning to every project I tackle.
+  From coding complex algorithms to diving into the latest advancements in AI,
+  I thrive on challenges and love turning ideas into reality.
+
+# ---------------------------------------------------------------------------
+# SKILLS — Group by category. The LLM reorders per job.
+# ---------------------------------------------------------------------------
+SKILLS:
+  Languages: |
+    Python, Java, C++, Bash
+  AI & ML: |
+    LLM Deployment, Prompt Engineering, Agentic Coding, RAG,
+    Transformer Models, Model Fine-Tuning, Computer Vision
+  Tools & Frameworks: |
+    Docker, ComfyUI, OpenCode, LM Studio, OpenClaw, LaTeX,
+    ROS (Robot Operating System), Jira, TestRails
+  Self-Hosting & Networking: |
+    Nginx, Reverse Proxy, VPS, DNS, Jellyfin, Immich, *arr Stack
+    (Sonarr, Radarr, Jellyseerr), Linux Server Administration
+  Platforms: |
+    Linux, Windows, MacOS
+  Practices: |
+    SDLC automation, autonomous debugging, REST APIs, MVP architecture,
+    on-premise infrastructure, data sovereignty
+
+# ---------------------------------------------------------------------------
+# WORK EXPERIENCE — Most recent first. Include 4-6 bullets per role.
+# ---------------------------------------------------------------------------
+EXPERIENCE:
+  - company: Freelance (Self-Employed)
+    location: City, Country
+    title: Freelance Developer
+    start: Jun 2025
+    end: Present
+    bullets:
+      - "Leveraged Agentic coding frameworks to streamline the software development life cycle (SDLC), utilizing autonomous agents for debugging, documentation, and initial prototyping."
+      - "Evaluated and integrated emerging AI architectures, including RAG (Retrieval-Augmented Generation) and Agentic reasoning loops, to build smarter, more intuitive applications for diverse clients."
+      - "Conducted continuous technical research into Transformer models and fine-tuning techniques to ensure client projects utilized the most cost-effective and performant models available."
+      - "Engineered and maintained Linux-based server environments using Docker for service isolation and custom Bash automation to streamline the deployment of AI-integrated applications."
+
+  - company: National Research Lab
+    location: Metro City, Country
+    title: Associate AI Researcher
+    start: Sep 2024
+    end: Feb 2025
+    bullets:
+      - "Engineered high-impact Computer Vision Proof of Concepts (PoCs), transitioning cutting-edge research into functional prototypes for industrial applications."
+      - "Developed robotic software systems within the ROS framework, utilizing a polyglot approach (C# and Python) to bridge hardware-software communication."
+      - "Architected a proprietary image generation pipeline by fine-tuning foundational models, optimizing the model for specific in-house use cases and data requirements."
+      - "Spearheaded on-premise LLM deployments using DeepSeek R1, ensuring 100% data sovereignty and security by hosting inference on internal hardware."
+      - "Managed technical partnerships with external engineering firms to ruggedize lab prototypes, facilitating the transition from fragile concepts to field-deployable units."
+      - "Closed the feedback loop between stakeholders and engineering teams, using field data to iteratively refine POCs for mass-scale adoption."
+
+  - company: Global Medical Device Co
+    location: Metro City, Country
+    title: IT Applications Intern
+    start: Sep 2023
+    end: Feb 2024
+    bullets:
+      - "Developed and maintained global EnterpriseOne (JDE) systems and mobile applications, ensuring seamless data flow across the enterprise."
+      - "Successfully migrated unsupported MAF applications to Native Android, leveraging MVP architecture and REST APIs for modern performance standards."
+      - "Resolved complex, real-world JDE tickets, deploying technical fixes and features to a worldwide production environment."
+      - "Managed development tasks via Jira and executed comprehensive quality audits through TestRails to maintain enterprise-level standards."
+
+# ---------------------------------------------------------------------------
+# PROJECTS — Side projects, open source, or standout work (optional)
+# ---------------------------------------------------------------------------
+PROJECTS:
+  - name: Self-Hosted Media Stack
+    tech: Jellyfin · Sonarr · Radarr · Jellyseerr · Nginx · Docker · Linux
+    bullets:
+      - "Built a fully self-hosted home media server using the *arr ecosystem (Sonarr, Radarr, Jellyseerr) with Jellyfin for streaming, all containerized via Docker on a local Linux machine."
+      - "Configured secure remote access from anywhere via Nginx reverse proxy tunneled through a rented VPS with a custom domain name, implementing SSL certificates and firewall rules."
+
+  - name: Self-Hosted Photo Backup (Immich)
+    tech: Immich · Docker · Nginx · Reverse Proxy · VPS · Linux
+    bullets:
+      - "Deployed Immich as a self-hosted Google Photos alternative, containerized on a local Linux server for automatic mobile photo backup and management."
+      - "Enabled secure external access via the same Nginx reverse proxy + VPS tunnel architecture, ensuring encrypted, always-available photo access without relying on third-party cloud services."
+
+# ---------------------------------------------------------------------------
+# EDUCATION
+# ---------------------------------------------------------------------------
+EDUCATION:
+  - degree: Bachelor of Computer Science (Hons.)
+    school: University of Technology
+    year: "10/2020 – 06/2023"
+    notes: "CGPA: 3.78 — Vice Chancellor Award Receiver"
+
+# ---------------------------------------------------------------------------
+# CERTIFICATIONS (optional)
+# ---------------------------------------------------------------------------
+CERTIFICATIONS: []
+# Add any certifications here, e.g.:
+#  - "AWS Solutions Architect – Associate (2023)"

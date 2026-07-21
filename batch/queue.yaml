@@ -1,0 +1,18 @@
+# Job queue for batch processing.
+# Add one entry per job posting URL you want to process.
+# Run /resume-queue to manage this file, or edit it directly.
+#
+# Fields:
+#   url   - (required) The job posting URL. Must be publicly accessible
+#           so the tool can fetch it, or a local file path.
+#   notes - (optional) Any context: referral, salary range, deadline, etc.
+#
+# Stage is NOT stored here. It is detected automatically from which files
+# exist in applications/<company-name>/. See /resume-status for details.
+
+jobs:
+  # - url: "https://boards.greenhouse.io/example/jobs/12345"
+  #   notes: "referred by Alex, deadline Aug 1"
+  #
+  # - url: "https://linkedin.com/jobs/view/67890"
+  #   notes: ""

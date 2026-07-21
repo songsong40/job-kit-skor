@@ -1,0 +1,24 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.toc
+
+# Your private applications — keeps your personal data safe
+# Each generated application lives in its own applications/<company>/ folder
+applications/*
+!applications/.gitkeep
+!applications/EXAMPLE/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Local Claude Code settings (machine-specific)
+.claude/settings.local.json
