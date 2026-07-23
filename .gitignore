@@ -22,3 +22,21 @@ Thumbs.db
 
 # Local Claude Code settings (machine-specific)
 .claude/settings.local.json
+
+master-resume.tex
+applications/
+jobs/
+job.txt
+*.pdf
+
+master-resume.tex
+applications/
+jobs/
+job.txt
+*.pdf
+
+master-resume.tex
+applications/
+jobs/
+job.txt
+*.pdf

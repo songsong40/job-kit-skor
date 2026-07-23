@@ -105,14 +105,36 @@ After the final summary, clean up the queue and orphaned directories:
    "prepped" stage), remove its entry from the queue. Keep the
    `applications/<company>/` directory — the user may want the files.
 3. For each job that was skipped by the user (fit too low, excluded by
-   threshold), remove its entry from the queue AND delete the
-   `applications/<company>/` directory entirely. These folders contain
-   only auto-generated analysis files.
+   threshold, or a SKIP verdict in `job-analysis.md`): **before deleting
+   anything**, log the skip — no skip is ever deleted without being logged
+   first. Same format as the single-job `/resume-analyze` skip path:
+   - Append one row to `batch/skor-log.csv` (create it with the header
+     `date,company,role,S_score,K_score,O_score,R_score,total,top_gaps`
+     first if the file is missing):
+     ```
+     YYYY-MM-DD,<company>,<role>,,,,,SKIPPED,"<reason>"
+     ```
+   - Leave `S_score`, `K_score`, `O_score` blank, `total` is the literal
+     string `SKIPPED`.
+   - `<company>`/`<role>`: read from `job-analysis.md` (role title as
+     extracted there). If `job-analysis.md` is missing, use `unknown` for
+     role.
+   - `<reason>`: if `job-analysis.md` has a SKIP verdict, use its exact
+     HARD BLOCKER category and detail. Otherwise use the batch-specific
+     reason the job was excluded (e.g. `"fit 3/10, below threshold"` or
+     `"excluded by user selection"`).
+   - Append to the end of the file — don't rewrite or reorder existing
+     rows.
+
+   Only after that row is appended: remove the job's entry from the queue
+   AND delete the `applications/<company>/` directory entirely. These
+   folders contain only auto-generated analysis files.
 4. Write the updated queue back to `batch/queue.yaml`.
 5. Show what was cleaned:
    ```
    Cleaned 2 completed, 1 skipped from queue. 0 remaining.
    Removed 1 orphaned directory: applications/initech/
+   Logged 1 skip to batch/skor-log.csv.
    ```
 
 ## Concurrency rules

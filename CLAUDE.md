@@ -3,12 +3,25 @@
 OpenCode reads this file automatically at the start of every session.
 These rules apply to every command and every generated document.
 
+## Dual command directories
+Slash commands are duplicated in two places: `.claude/commands/` (read by
+Claude Code) and `.opencode/commands/` (read by OpenCode). `.claude/commands/`
+is the single source of truth. When editing any command file, make the
+change in `.claude/commands/` first, then copy the same content into the
+matching file in `.opencode/commands/` in the same step. Never edit only one
+side — the two must stay identical or the tools drift out of sync silently.
+
 ## Ground truth
 - `master-resume.tex` is the ONLY source of truth about the candidate.
 - NEVER invent, exaggerate, or assume jobs, titles, dates, skills, tools,
   metrics, or achievements. If information is missing, ASK the user.
 - If a job requirement is not covered by the master resume, report it as a
   gap. Do not paper over it. Honest gaps are useful; fabrication is not.
+- Never fabricate, exaggerate, or imply skills, tools, or experience that
+  are not in `master-resume.tex`. If something is missing, report it as a
+  gap; do not invent a workaround.
+- Keep job titles exactly as they appear in `master-resume.tex`. Never
+  adjust a title to match the target job posting's title.
 
 ## Visual design (matches Resume_base.pptx)
 The template uses the Poppins font family with an accent color scheme.
@@ -33,6 +46,8 @@ Every generated resume must follow these styling rules:
 
 ## ATS-safe formatting rules (apply to every generated resume)
 - Single column only. No tables, no text boxes, no images, no icons.
+- Skills section must be plain text (comma- or line-separated). Never a
+  table -- tables break ATS parsing.
 - Contact info in the document body, not in a page header/footer.
 - Standard section names only: Summary, Skills, Work Experience,
   Projects, Education, Certifications.
@@ -55,6 +70,39 @@ Every generated resume must follow these styling rules:
   provides one. Never fabricate numbers.
 - Mirror the job description's exact wording ONLY when it truthfully
   describes the candidate's experience.
+
+## Banned words
+- Do not use these words, or similar AI-sounding buzzwords, in any
+  generated content (resumes, cover letters, analyses, prep notes):
+  leverage, seamless, spearhead, foster, harness, pivotal, synergy.
+- Write in plain, human language instead.
+
+## Cover letter format
+- Use Swiss/British business letter format.
+- Open with "Dear [Name],". Close with "Yours sincerely,".
+
+## Resume review: the SKOR method
+Score every tailored resume out of 100 using SKOR (keep the Malay labels
+as-is):
+- **S - Sasaran Kerja** (40 pts): how well the experience targets the job's
+  core responsibilities.
+- **K - Kejayaan KPI** (40 pts): quantified achievements and metrics.
+- **O - Optimum Look** (10 pts): ATS-safe formatting and scannability.
+- **R - Real & Raw** (10 pts): authenticity, no fabrication.
+
+When reviewing a tailored resume, act as a senior recruiter with 10+ years
+of experience plus an ATS specialist:
+- Give an upfront, honest fit verdict and a "7-second scan" read: what a
+  recruiter would notice in the first pass.
+- Gate-check hard requirements from the job posting (must-have years,
+  certifications, tools, work authorization, etc.).
+- Flag real gaps candidly. Never soften or hide a gap to make the fit look
+  better than it is.
+
+`/resume-review` appends each application's SKOR result as one row to
+`batch/skor-log.csv` (never overwrites existing rows). Use `/skor-summary`
+to see average scores, the weakest SKOR category, recurring gaps, and the
+trend over time across all logged applications.
 
 ## Distinguishing education, work, and projects
 - Bootcamps, academies, and training programmes are EDUCATION, not work
@@ -105,6 +153,13 @@ Each application lives in `applications/<company-name>/`:
 ## Language
 - Explain things in simple, clear language. Some users are not native
   English speakers. Avoid jargon, or explain it when unavoidable.
+
+## Quality assurance: triple-check
+Before presenting any deliverable (resume, cover letter, analysis, prep
+notes), run three passes:
+1. **Accuracy pass** - every fact matches `master-resume.tex`.
+2. **Humanise pass** - reads naturally, not AI-generated.
+3. **Tone-match pass** - matches the target company/role's tone.
 
 ## Handling blocked job sites
 

@@ -7,10 +7,16 @@ Create a tailored resume and cover letter for: $ARGUMENTS
 
 Requirements:
 1. Read `master-resume.tex` and `applications/<company>/job-analysis.md`.
+   If the analysis's verdict is STRETCH, APPLY ANYWAY, note the specific
+   compensating strengths and the soft gaps the cover letter must address —
+   both steps below need them.
 2. Build `resume.tex` in the company folder:
    - Select ONLY the most relevant experience, projects, and skills for the
      top-priority requirements. Cut low-relevance content to fit one page.
    - Reorder so the strongest match appears in the top third of the page.
+     On a STRETCH verdict, lead specifically with the compensating
+     strengths named in `job-analysis.md`, not just the generic strongest
+     match.
    - Rewrite bullets to mirror the job's exact keywords, but ONLY where
      truthful. Follow every rule in CLAUDE.md (ATS-safe, no invention).
     - Apply the design rules from CLAUDE.md: Poppins fonts, #7798A7 accent on
@@ -24,6 +30,10 @@ Requirements:
    (a) why this company specifically (use the company research),
    (b) my 2-3 strongest matching achievements with real numbers,
    (c) short, confident closing. Avoid cliches. No em dashes.
+   On a STRETCH verdict, name the soft gap(s) directly rather than hoping
+   they go unnoticed, and pair each with the compensating strength from
+   `job-analysis.md` in the same sentence or the next one — honest framing,
+   not spin.
 4. Compile both to PDF. Try `xelatex` first (preferred: produces clean text
    extraction). If xelatex is not installed, fall back to `lualatex` but
    refresh the font cache first: `luaotfload-tool --update --force`. Fix any
