@@ -1,3 +1,10 @@
+Forked from [yapsancode/job-kit](https://github.com/yapsancode/job-kit) via [AdamZikriZailani/job-kit-opencode](https://github.com/AdamZikriZailani/job-kit-opencode).
+
+This fork adds:
+- **SKOR scoring** — every tailored resume scored out of 100 across four dimensions
+- **Append-only score log** (`batch/skor-log.csv`) tracking every application
+- **Tiered fit check** — separates hard blockers from soft gaps, so winnable stretch roles aren't discarded
+- **`/skor-summary`** — analytics across all applications: averages, weakest category, recurring gaps, score trend
 # Job Kit - A Resume Tailor
 
 Turn one master resume into a job-specific, ATS-safe resume and cover letter
