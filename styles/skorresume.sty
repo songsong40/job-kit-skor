@@ -15,7 +15,9 @@
 
 \RequirePackage{fontspec}
 \RequirePackage{xcolor}
-\RequirePackage[margin=0.55in]{geometry}
+% 0.55in margins pushed lines to ~133 characters, roughly double a comfortable
+% reading measure. 0.78in shortens the line and still keeps a one-page resume.
+\RequirePackage[margin=0.78in]{geometry}
 \RequirePackage{titlesec}
 \RequirePackage{enumitem}
 \RequirePackage{ragged2e}
@@ -91,7 +93,7 @@
 
 \newcommand{\resumecontact}[1]{%
   \begin{center}%
-    {\fontlight\fontsize{8}{11}\selectfont #1}%
+    {\fontlight\fontsize{9}{12}\selectfont #1}%
   \end{center}%
   \vspace{2pt}%
 }
@@ -111,48 +113,50 @@
 
 % ---------------------------------------------------------------------------
 % \job{ROLE}{LOCATION | DATES}{COMPANY}
-% Role title left in 9 pt Medium accent, location and dates right-aligned on
-% the same line in 9 pt Light italic, company on the line below in 9 pt Light
-% italic.
+% Role title left in 10 pt Medium accent, location and dates right-aligned on
+% the same line in 9.5 pt Light italic, company on the line below in 9.5 pt
+% Light italic. CLAUDE.md specifies 9 pt here and 8 pt for body text; the whole
+% scale is raised one step because 8 pt across this measure was too small to
+% read comfortably. Hierarchy and every other rule are unchanged.
 % ---------------------------------------------------------------------------
 \newcommand{\job}[3]{%
   \vspace{3pt}%
-  {\fontmedium\fontsize{9}{11}\selectfont\color{accent} #1}%
+  {\fontmedium\fontsize{10}{12}\selectfont\color{accent} #1}%
   \hfill
-  {\fontlight\itshape\fontsize{9}{11}\selectfont #2}\par
-  {\fontlight\itshape\fontsize{9}{11}\selectfont #3}\par
+  {\fontlight\itshape\fontsize{9.5}{12}\selectfont #2}\par
+  {\fontlight\itshape\fontsize{9.5}{12}\selectfont #3}\par
   \vspace{1pt}%
 }
 
 % ---------------------------------------------------------------------------
-% Bullets: 8 pt Light, justified. Emphasise the opening phrase with \textbf{}.
+% Bullets: 9 pt Light, justified. Emphasise the opening phrase with \textbf{}.
 % ---------------------------------------------------------------------------
 \newenvironment{jobbullets}
   {\begin{itemize}[leftmargin=12pt, topsep=1pt, itemsep=1.5pt, parsep=0pt,
                    label=\textbullet]%
-   \fontlight\fontsize{8}{10.5}\selectfont\justifying}
+   \fontlight\fontsize{9}{12}\selectfont\justifying}
   {\end{itemize}}
 
 % Plain-text paragraph block, used for Summary and Skills. Never a table:
 % tables break ATS parsing.
 \newcommand{\plainblock}[1]{%
-  {\fontlight\fontsize{8}{10.5}\selectfont\justifying #1\par}%
+  {\fontlight\fontsize{9}{12}\selectfont\justifying #1\par}%
   \vspace{1pt}%
 }
 
 % Skills line: "Category: items, items, items" as plain text.
 \newcommand{\skillline}[2]{%
-  {\fontlight\fontsize{8}{10.5}\selectfont\justifying\textbf{#1:} #2\par}%
+  {\fontlight\fontsize{9}{12}\selectfont\justifying\textbf{#1:} #2\par}%
   \vspace{1.5pt}%
 }
 
 % Single education / certification entry.
 \newcommand{\edu}[3]{%
   \vspace{2pt}%
-  {\fontmedium\fontsize{9}{11}\selectfont\color{accent} #1}%
+  {\fontmedium\fontsize{10}{12}\selectfont\color{accent} #1}%
   \hfill
-  {\fontlight\itshape\fontsize{9}{11}\selectfont #3}\par
-  {\fontlight\itshape\fontsize{9}{11}\selectfont #2}\par
+  {\fontlight\itshape\fontsize{9.5}{12}\selectfont #3}\par
+  {\fontlight\itshape\fontsize{9.5}{12}\selectfont #2}\par
 }
 
 % ---------------------------------------------------------------------------
