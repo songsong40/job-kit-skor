@@ -45,6 +45,15 @@
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 
+% ragged2e's \justifying resets \parindent to \JustifyingParindent, which
+% otherwise re-introduces a first-line indent everywhere we justify.
+\setlength{\JustifyingParindent}{0pt}
+
+% Single space after a full stop. Without this, TeX adds extra sentence space,
+% which in justified text opens visible gaps and also makes abbreviations like
+% "Sdn. Bhd." break oddly.
+\frenchspacing
+
 % ---------------------------------------------------------------------------
 % Text-extraction safety (ATS)
 % ---------------------------------------------------------------------------
@@ -147,10 +156,46 @@
 }
 
 % ---------------------------------------------------------------------------
-% Cover letter helpers (Swiss / British business letter format)
+% Cover letter (Swiss / British business letter format)
 % ---------------------------------------------------------------------------
-\newcommand{\letterbody}[1]{%
-  {\fontlight\fontsize{10}{14}\selectfont\justifying #1\par}%
+% Blocks are flush left with no first-line indent, separated by one consistent
+% vertical step. Address and date blocks stay ragged right, because justifying
+% a three-word line stretches it across the page. Only real prose is justified.
+%
+%   \letterblock{...}    sender, recipient, date  (ragged right, \\ between lines)
+%   \lettersubject{...}  bold subject line
+%   \letterpara{...}     one body paragraph       (justified)
+%   \lettersignoff{...}{...}  closing phrase, then name with signing space
+%
+\newlength{\letterstep}
+\setlength{\letterstep}{11pt}
+
+\newcommand{\letterfont}{\fontlight\fontsize{10}{14.5}\selectfont}
+
+\newcommand{\letterblock}[1]{%
+  \begingroup\letterfont\raggedright\setlength{\parindent}{0pt}%
+  #1\par\endgroup
+  \vspace{\letterstep}%
+}
+
+\newcommand{\lettersubject}[1]{%
+  \begingroup\fontmedium\fontsize{10}{14.5}\selectfont\raggedright
+  \setlength{\parindent}{0pt}%
+  #1\par\endgroup
+  \vspace{\letterstep}%
+}
+
+\newcommand{\letterpara}[1]{%
+  \begingroup\letterfont\justifying\setlength{\parindent}{0pt}%
+  #1\par\endgroup
+  \vspace{\letterstep}%
+}
+
+\newcommand{\lettersignoff}[2]{%
+  \begingroup\letterfont\raggedright\setlength{\parindent}{0pt}%
+  #1\par
+  \vspace{30pt}%
+  #2\par\endgroup
 }
 
 \endinput
