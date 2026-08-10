@@ -59,7 +59,7 @@ while IFS= read -r -d '' tex; do
   note=""
   [[ "$words" -lt 50 ]] && { note="$note  TEXT-EXTRACTION-EMPTY"; status=1; }
   [[ "$badhyphen" -gt 0 ]] && { note="$note  NON-ASCII-HYPHEN"; status=1; }
-  if [[ "$base" == "resume" && "$pages" -gt 1 ]]; then
+  if [[ "$base" == resume* && "$pages" -gt 1 ]]; then
     note="$note  OVER-ONE-PAGE"
     status=1
   fi
