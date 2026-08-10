@@ -1,0 +1,156 @@
+% skorresume.sty -- shared styling for every resume and cover letter in this
+% workspace. Follows the visual design rules in CLAUDE.md (Resume_base.pptx).
+%
+% Compile with xelatex. The build script sets TEXINPUTS so this file is found:
+%     TEXINPUTS=<repo>/styles: xelatex resume.tex
+%
+% Fonts: Poppins is the design font. If Poppins is not installed on the
+% machine doing the compile, we fall back to Lato, which ships with TeX Live
+% and carries the same Light/Regular/Medium/Bold range. Install Poppins from
+% https://fonts.google.com/specimen/Poppins to get the exact intended look;
+% no edit to any .tex file is needed, the switch below is automatic.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{skorresume}[2026/08/10 SKOR resume style]
+
+\RequirePackage{fontspec}
+\RequirePackage{xcolor}
+\RequirePackage[margin=0.55in]{geometry}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{ragged2e}
+\RequirePackage{microtype}
+\RequirePackage[hidelinks]{hyperref}
+
+% ---------------------------------------------------------------------------
+% Colours
+% ---------------------------------------------------------------------------
+\definecolor{bodytext}{HTML}{394349}
+\definecolor{accent}{HTML}{7798A7}
+
+% ---------------------------------------------------------------------------
+% Fonts: Poppins when available, Lato otherwise
+% ---------------------------------------------------------------------------
+\IfFontExistsTF{Poppins}{%
+  \setmainfont{Poppins}%
+  \newfontfamily\fontlight{Poppins Light}[ItalicFont={Poppins Light Italic}]%
+  \newfontfamily\fontmedium{Poppins Medium}[ItalicFont={Poppins Medium Italic}]%
+}{%
+  \setmainfont{Lato}%
+  \newfontfamily\fontlight{Lato Light}[ItalicFont={Lato Light Italic}]%
+  \newfontfamily\fontmedium{Lato Medium}[ItalicFont={Lato Medium Italic}]%
+}
+
+\color{bodytext}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+% ---------------------------------------------------------------------------
+% Text-extraction safety (ATS)
+% ---------------------------------------------------------------------------
+% Without this, XeLaTeX writes the font's own glyph codes into the PDF and a
+% plain "-" is extracted as U+2010, which breaks phone numbers and date ranges
+% for a parser. ActualText makes extraction return the characters we typed.
+\XeTeXgenerateactualtext=1
+
+% No hyphenation. A word split across two lines extracts as "onboard-ing" and
+% an ATS reads that as two unknown tokens. Justification is kept; the extra
+% tolerance absorbs the loose lines that result.
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=3000
+\emergencystretch=3em
+
+% ---------------------------------------------------------------------------
+% Header: name, headline, contact line
+% Contact info sits in the document body, never in a page header, so ATS
+% parsers can read it.
+% ---------------------------------------------------------------------------
+\newcommand{\resumename}[1]{%
+  \begin{center}%
+    {\bfseries\fontsize{23}{27}\selectfont #1}%
+  \end{center}%
+  \vspace{-6pt}%
+}
+
+\newcommand{\resumeheadline}[1]{%
+  \begin{center}%
+    {\fontlight\fontsize{11}{14}\selectfont\color{accent} #1}%
+  \end{center}%
+  \vspace{-6pt}%
+}
+
+\newcommand{\resumecontact}[1]{%
+  \begin{center}%
+    {\fontlight\fontsize{8}{11}\selectfont #1}%
+  \end{center}%
+  \vspace{2pt}%
+}
+
+% ---------------------------------------------------------------------------
+% Section titles: 13 pt Medium, all caps, with a 0.75 pt accent rule below.
+% titlerule is placed in the "after" hook so a long title can never be
+% clamped by the rule.
+% ---------------------------------------------------------------------------
+% \MakeUppercase belongs in the <before-code> argument, where it receives the
+% title as its argument. Putting it in <format> breaks under current LaTeX.
+\titleformat{\section}
+  {\fontmedium\fontsize{13}{15}\selectfont\color{bodytext}}
+  {}{0pt}{\MakeUppercase}
+  [{\vspace{1pt}\color{accent}\titlerule[0.75pt]}]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+
+% ---------------------------------------------------------------------------
+% \job{ROLE}{LOCATION | DATES}{COMPANY}
+% Role title left in 9 pt Medium accent, location and dates right-aligned on
+% the same line in 9 pt Light italic, company on the line below in 9 pt Light
+% italic.
+% ---------------------------------------------------------------------------
+\newcommand{\job}[3]{%
+  \vspace{3pt}%
+  {\fontmedium\fontsize{9}{11}\selectfont\color{accent} #1}%
+  \hfill
+  {\fontlight\itshape\fontsize{9}{11}\selectfont #2}\par
+  {\fontlight\itshape\fontsize{9}{11}\selectfont #3}\par
+  \vspace{1pt}%
+}
+
+% ---------------------------------------------------------------------------
+% Bullets: 8 pt Light, justified. Emphasise the opening phrase with \textbf{}.
+% ---------------------------------------------------------------------------
+\newenvironment{jobbullets}
+  {\begin{itemize}[leftmargin=12pt, topsep=1pt, itemsep=1.5pt, parsep=0pt,
+                   label=\textbullet]%
+   \fontlight\fontsize{8}{10.5}\selectfont\justifying}
+  {\end{itemize}}
+
+% Plain-text paragraph block, used for Summary and Skills. Never a table:
+% tables break ATS parsing.
+\newcommand{\plainblock}[1]{%
+  {\fontlight\fontsize{8}{10.5}\selectfont\justifying #1\par}%
+  \vspace{1pt}%
+}
+
+% Skills line: "Category: items, items, items" as plain text.
+\newcommand{\skillline}[2]{%
+  {\fontlight\fontsize{8}{10.5}\selectfont\justifying\textbf{#1:} #2\par}%
+  \vspace{1.5pt}%
+}
+
+% Single education / certification entry.
+\newcommand{\edu}[3]{%
+  \vspace{2pt}%
+  {\fontmedium\fontsize{9}{11}\selectfont\color{accent} #1}%
+  \hfill
+  {\fontlight\itshape\fontsize{9}{11}\selectfont #3}\par
+  {\fontlight\itshape\fontsize{9}{11}\selectfont #2}\par
+}
+
+% ---------------------------------------------------------------------------
+% Cover letter helpers (Swiss / British business letter format)
+% ---------------------------------------------------------------------------
+\newcommand{\letterbody}[1]{%
+  {\fontlight\fontsize{10}{14}\selectfont\justifying #1\par}%
+}
+
+\endinput

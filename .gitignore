@@ -40,3 +40,9 @@ applications/
 jobs/
 job.txt
 *.pdf
+
+# Candidate master resumes — same privacy rule as applications/ above.
+# These hold real names, emails and phone numbers, so they stay local.
+# The README and the example folder are kept so the structure is documented.
+candidates/*
+!candidates/README.md

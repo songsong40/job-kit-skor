@@ -11,6 +11,31 @@ change in `.claude/commands/` first, then copy the same content into the
 matching file in `.opencode/commands/` in the same step. Never edit only one
 side — the two must stay identical or the tools drift out of sync silently.
 
+## Multiple candidates
+This workspace supports more than one job seeker. Each candidate has their
+own master resume, and applications are grouped per candidate:
+
+```
+candidates/<candidate>/master-resume.tex     ground truth for that person
+applications/<candidate>/<company-slug>/     one folder per application
+styles/skorresume.sty                        shared styling for every document
+build.sh                                     compile + ATS-check everything
+```
+
+Rules that follow from this:
+- A tailored resume may ONLY draw on the master resume of its own
+  candidate. Never mix facts between candidates.
+- Where these rules say `master-resume.tex`, read it as "the master resume
+  of the candidate this application belongs to".
+- Each master resume keeps an OPEN QUESTIONS comment block at the top,
+  listing things not yet confirmed by that candidate. Items there are NOT
+  facts and must never appear on a tailored resume until confirmed.
+- Compile with `./build.sh` (all documents) or `./build.sh <path>` (one
+  folder). It runs xelatex, then checks every PDF for page count, empty
+  text extraction, and non-ASCII hyphens.
+- Poppins stays the design font. `styles/skorresume.sty` falls back to Lato
+  automatically when Poppins is not installed, with no edit to any `.tex`.
+
 ## Ground truth
 - `master-resume.tex` is the ONLY source of truth about the candidate.
 - NEVER invent, exaggerate, or assume jobs, titles, dates, skills, tools,
