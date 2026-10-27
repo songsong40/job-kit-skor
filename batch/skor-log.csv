@@ -2,3 +2,8 @@ date,company,role,S_score,K_score,O_score,R_score,total,top_gaps
 2026-07-23,paessler,Commercial Renewals Manager,,,,,SKIPPED,"language required for delivery: fluent German"
 2026-10-27,nssb-gxs-aml,AML Champion (12-month project),20,8,9,10,47,"no Python/SQL/C++ | no AML/KYC/screening experience | only one metric (CSAT 2023/24)"
 2026-10-27,digibank-customer-service,Customer Support Executive,33,10,9,10,62,"inbound calls/concurrent chats/WPM/shifts not shown | no banking experience | only one metric (CSAT 2023/24)"
+2026-10-27,nssb-gxs-aml,AML Champion (12-month project),21,12,9,10,52,"no Python/SQL/C++ | no AML/KYC/screening experience | no CSAT % or rank"
+2026-10-27,digibank-customer-service,Customer Support Executive,34,14,9,10,67,"no inbound calls | concurrent chats and WPM not shown | no banking experience"
+2026-10-27,basf-transport-management,Transport Management (Inbound/Outbound),24,14,9,10,57,"no sea freight or transport documents | no SAP R/3 | diploma not in a related field"
+2026-10-27,schneider-electric-customer-success,Customer Success Senior Associate,15,14,9,10,48,"no renewals/upsell/QBR | no energy/IoT/Cloud industry knowledge | junior KAM support vs senior role"
+2026-10-27,micron-customer-success-ops,Customer Success Operations Specialist,28,14,9,10,61,"diploma not bachelor's in business | no scorecard/CAPA/QBR ownership | no AI or SAP"
